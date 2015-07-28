@@ -13,6 +13,7 @@ class SongsController < ApplicationController
 
   def create
     @song = Song.new(song_params)
+
     if @song.save
       session[:most_recent_song_title] = @song.title
       flash[:notice] = 'Song Created'
