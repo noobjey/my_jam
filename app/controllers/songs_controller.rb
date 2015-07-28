@@ -12,9 +12,15 @@ class SongsController < ApplicationController
   end
 
   def create
-    @song = Song.create(song_params)
-    session[:most_recent_song_title] = @song.title
-    redirect_to song_path(@song)
+    @song = Song.new(song_params)
+    if @song.save
+      session[:most_recent_song_title] = @song.title
+      flash[:notice] = 'Song Created'
+      redirect_to song_path(@song)
+    else
+      flash[:error] = 'Missing Title'
+      redirect_to new_song_path(@song)
+    end
     # both work the changed param url thing in song model not sure about which is better worse
     # redirect_to song_path(song_params[:title])
   end
