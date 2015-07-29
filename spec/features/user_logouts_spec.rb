@@ -6,8 +6,6 @@ RSpec.feature "UserLogouts", type: :feature do
     logged_in_message = "Welcome #{user.username}"
     visit login_path
 
-    click_link('Login')
-
     fill_in 'session_username', with: user.username
     fill_in 'session_password', with: 'dirt'
 
@@ -20,7 +18,6 @@ RSpec.feature "UserLogouts", type: :feature do
     click_link("Logout")
 
     expect(page).to_not have_content(logged_in_message)
-
   end
 
 end
