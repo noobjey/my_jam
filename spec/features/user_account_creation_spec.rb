@@ -2,8 +2,6 @@ require 'rails_helper'
 
 describe 'User' do
 
-  include Capybara::DSL
-
   it 'can create an account' do
     visit new_user_path
 
