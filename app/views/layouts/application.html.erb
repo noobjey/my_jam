@@ -8,6 +8,10 @@
 </head>
 <body>
 
+<% if flash[:new_user] %>
+  <div>Welcome <%= flash[:new_user] %></div>
+<% end %>
+
 <% if flash[:error] %>
   <div><%= flash[:error] %></div>
 <% elsif flash[:notice] %>
